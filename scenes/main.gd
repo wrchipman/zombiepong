@@ -1,19 +1,25 @@
 extends Node2D
 @export var speed = 100
 var screen_size
-var player1
-var player2
+var score1
+var score2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	player1 = $Player1
-	player2 = $Player2
+	score1 = 0
+	score2 = 0
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("P1Down"):
-		velocity
-		move_and_slide()
+	if $Ball.position.x > 330:
+		score1 +=1
+		print("Score 1: ", score1)
+		$Ball.position =Vector2(0, 0)
+	if $Ball.position.x < -330:
+		score2 +=1
+		print("Score 2: ", score2)
+		$Ball.position =Vector2(0, 0)
+#	
