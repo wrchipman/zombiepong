@@ -1,13 +1,15 @@
 extends RigidBody2D
-
-@export var ball_speed = Vector2(200, 200)
+@export var base_speed = 250
+var ball_speed 
 @export var rotation_speed = 1.5
 var rotation_direction = 1
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,3 +22,9 @@ func _physics_process(delta):
 			rotation_direction *= -1
 			
 		
+func set_ball_speed(level_adjust):
+	ball_speed = Vector2(base_speed * (randf()+level_adjust), base_speed * (randf()+level_adjust))
+
+
+func _on_main_adjust_speed(adjust):
+	set_ball_speed(adjust)
