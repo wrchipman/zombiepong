@@ -8,7 +8,11 @@ var rotation_direction = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	stop_ball()
+
+func stop_ball():
+	ball_speed = Vector2.ZERO
+	rotation = 0.0
 	
 
 

@@ -26,3 +26,4 @@ color = Color(0.745098, 0.784314, 1, 1)
 [node name="HUD" parent="." instance=ExtResource("6_tefeu")]
 
 [connection signal="adjust_speed" from="." to="Ball" method="_on_main_adjust_speed"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

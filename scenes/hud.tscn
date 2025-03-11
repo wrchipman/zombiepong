@@ -1,13 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://be2cp3hocy4ok"]
+[gd_scene load_steps=3 format=3 uid="uid://be2cp3hocy4ok"]
 
 [ext_resource type="Script" uid="uid://d0qxx8287qdwe" path="res://scenes/hud.gd" id="1_ahhtf"]
+[ext_resource type="FontFile" uid="uid://cmabd7w4grjse" path="res://assets/font/Xolonium-Regular.ttf" id="2_oo0fn"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ahhtf")
 
 [node name="ScoreLabelPlayer1" type="Label" parent="."]
-offset_right = 34.0
-offset_bottom = 33.0
+offset_right = 63.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 28
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -16,9 +19,11 @@ vertical_alignment = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -39.0
-offset_bottom = 36.0
+offset_left = -66.0
+offset_bottom = 57.0
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 28
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -31,6 +36,8 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 28
 text = "Level: 1"
 
 [node name="TitleLabel" type="Label" parent="."]
@@ -45,17 +52,23 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 60
 text = "Zombie Pong!"
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
+offset_left = -78.0
+offset_top = -71.0
+offset_right = 78.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Restart"
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
