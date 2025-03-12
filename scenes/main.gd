@@ -10,9 +10,9 @@ var max_score_per_level = 2
 var max_levels = 5
 var player1_level = 0
 var player2_level = 0
+var game_over = false
 #TODO
 #Update Graphics 
-#Add Sound
 #Add number of player selection
 #Add AI for single player
 
@@ -31,7 +31,7 @@ func _ready():
 	$TopWall/CollisionShape2D.shape.set_size(Vector2(screen_size.x, 1))
 	$BottomWall.position = Vector2(screen_size.x/2, screen_size.y)
 	$BottomWall/CollisionShape2D.shape.set_size(Vector2(screen_size.x, 1))
-	$Ball.hide()
+	#$Ball.hide()
 	
 func new_game():
 	$Ball.show()
@@ -47,6 +47,7 @@ func new_game():
 	$HUD.update_level(level)
 	$HUD/TitleLabel.hide()
 	$HUD.restart_game()
+	game_over = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -58,8 +59,12 @@ func _process(_delta):
 		score2 +=1
 		$HUD.update_player2_score(score2)
 		$Ball.position = ball_start_position
-	if score1 == max_score_per_level or score2 == max_score_per_level:
+	if player1_level>= 3 or player2_level >= 3:
+		game_over = true
+	if not game_over and (score1 == max_score_per_level or score2 == max_score_per_level):
+		print("in here")
 		reset_and_raise_level()
+		
 #
 func reset_and_raise_level():
 	if score1 == max_score_per_level:
@@ -91,9 +96,11 @@ func reset_and_raise_level():
 	reset_ball(level)
 	$HUD.update_player1_score(score1)
 	$HUD.update_player1_score(score2)
-	$HUD.update_level(level)
+	if level < 6:
+		$HUD.update_level(level)
 	
 func end_game():
+	game_over = true
 	$Ball.position = ball_start_position
 	$Ball.stop_ball()
 	#$Ball.hide()
@@ -105,6 +112,7 @@ func end_game():
 	$HUD/StartButton.show()
 	
 func reset_ball(new_level):
+	print("called")
 	var speed_change = 1 + .1 * new_level
 	$Ball.position = ball_start_position
 	adjust_speed.emit(speed_change)
