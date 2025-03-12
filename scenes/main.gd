@@ -7,10 +7,10 @@ var ball_start_position
 var level = 1
 signal adjust_speed(float)
 var max_score_per_level = 2
-var max_levels = 1
+var max_levels = 5
+var player1_level = 0
+var player2_level = 0
 #TODO
-#Indicate player that won
-#Track number of level wins per player. Maybe an icon next to score
 #Update Graphics 
 #Add Sound
 #Add number of player selection
@@ -21,10 +21,10 @@ var max_levels = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	$ColorRect.size = screen_size
-	$ColorRect.position = Vector2.ZERO
-	$Player1.position = Vector2(20, screen_size.y/2)
-	$Player2.position = Vector2(screen_size.x - 20 , screen_size.y/2)
+	
+	$Background.position = Vector2(screen_size.x/2 - 10, screen_size.y/2)
+	$Player1.position = Vector2(60, screen_size.y/2)
+	$Player2.position = Vector2(screen_size.x - 70 , screen_size.y/2)
 	ball_start_position = Vector2(screen_size.x/2, screen_size.y/2)
 	$Ball.position = ball_start_position
 	$TopWall.position = Vector2(screen_size.x/2, 0)
@@ -38,12 +38,15 @@ func new_game():
 	score1 = 0
 	score2 = 0
 	level = 1
+	player1_level = 0
+	player2_level = 0
 	reset_ball(level)
 	
 	$HUD.update_player1_score(score1)
 	$HUD.update_player1_score(score2)
 	$HUD.update_level(level)
 	$HUD/TitleLabel.hide()
+	$HUD.restart_game()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -59,23 +62,46 @@ func _process(_delta):
 		reset_and_raise_level()
 #
 func reset_and_raise_level():
+	if score1 == max_score_per_level:
+		player1_level += 1
+		match player1_level:
+			1:
+				$HUD/P1LevelCoin1.show()
+			2:
+				$HUD/P1LevelCoin2.show()
+			3:
+				$HUD/P1LevelCoin3.show()
+				end_game()
+	else:
+		player2_level += 1
+		match player2_level:
+			1:
+				$HUD/P2LevelCoin1.show()
+			2:
+				$HUD/P2LevelCoin2.show()
+			3:
+				$HUD/P2LevelCoin3.show()
+				end_game()
+		
 	score1 = 0
 	score2 = 0
 	level += 1
+	
 	
 	reset_ball(level)
 	$HUD.update_player1_score(score1)
 	$HUD.update_player1_score(score2)
 	$HUD.update_level(level)
-	if level > max_levels:
-		end_game()
 	
 func end_game():
 	$Ball.position = ball_start_position
 	$Ball.stop_ball()
-	$Ball.hide()
+	#$Ball.hide()
 	$HUD/TitleLabel.show()
-	$HUD.update_title("Game Over")
+	if player1_level > player2_level:
+		$HUD.update_title("Game Over\nPLayer 1 Wins")
+	else:
+		$HUD.update_title("Game Over\nPLayer 2 Wins")
 	$HUD/StartButton.show()
 	
 func reset_ball(new_level):

@@ -3,7 +3,8 @@ extends RigidBody2D
 var ball_speed 
 @export var rotation_speed = 1.5
 var rotation_direction = 1
-
+var wall_bounce_sound = preload("res://assets/sounds/wall_bounce.wav")
+var paddle_bounce_sound = preload("res://assets/sounds/paddle_hit.wav")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +25,12 @@ func _physics_process(delta):
 		ball_speed = ball_speed.bounce(collision_info.get_normal())
 		if collision_info.get_collider().collision_layer == 2:	
 			rotation_direction *= -1
+			$AudioStreamPlayer2D.set_stream(paddle_bounce_sound)
+			$AudioStreamPlayer2D.play()
+		else:
+			$AudioStreamPlayer2D.set_stream(wall_bounce_sound)
+			$AudioStreamPlayer2D.play()
+		
 			
 		
 func set_ball_speed(level_adjust):

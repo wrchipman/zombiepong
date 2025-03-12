@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctl2o5u4aphe0"
-path="res://.godot/imported/PinkSquare.png-a5c539c61db635f884ce9a6f59cea93c.ctex"
+uid="uid://c0lqjwdjnibnr"
+path="res://.godot/imported/SimpleBall.png-576f1a62b53bf0187858e09535e63d73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PinkSquare.png"
-dest_files=["res://.godot/imported/PinkSquare.png-a5c539c61db635f884ce9a6f59cea93c.ctex"]
+source_file="res://assets/sprites/SimpleBall.png"
+dest_files=["res://.godot/imported/SimpleBall.png-576f1a62b53bf0187858e09535e63d73.ctex"]
 
 [params]
 
