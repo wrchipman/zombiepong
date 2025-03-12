@@ -18,33 +18,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="P1LevelCoin1" parent="." instance=ExtResource("3_5ysmq")]
-visible = false
 position = Vector2(76, 32)
 scale = Vector2(5, 5)
 
 [node name="P1LevelCoin2" parent="." instance=ExtResource("3_5ysmq")]
-visible = false
 position = Vector2(111, 32)
 scale = Vector2(5, 5)
 
 [node name="P1LevelCoin3" parent="." instance=ExtResource("3_5ysmq")]
-visible = false
 position = Vector2(144, 32)
 scale = Vector2(5, 5)
 frame_progress = 0.548945
 
 [node name="P2LevelCoin1" parent="." instance=ExtResource("3_5ysmq")]
-visible = false
 position = Vector2(984, 32)
 scale = Vector2(5, 5)
 
 [node name="P2LevelCoin2" parent="." instance=ExtResource("3_5ysmq")]
-visible = false
 position = Vector2(1020, 32)
 scale = Vector2(5, 5)
 
 [node name="P2LevelCoin3" parent="." instance=ExtResource("3_5ysmq")]
-visible = false
 position = Vector2(1056, 32)
 scale = Vector2(5, 5)
 
