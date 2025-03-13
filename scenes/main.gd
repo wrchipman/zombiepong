@@ -7,7 +7,7 @@ var score2 = 0
 var ball_start_position
 var level = 1
 
-var max_score_per_level = 2
+var max_score_per_level = 5
 var max_levels = 5
 var player1_level = 0
 var player2_level = 0
@@ -157,6 +157,7 @@ func end_game():
 		$HUD.update_title("Game Over\nPlayer 2 Wins")
 	$HUD/TitleLabel.show()
 	$HUD/StartButton.show()
+	$HUD/AILevelButton.show()
 	
 func _on_left_goal_body_entered(_body):
 	#Player 2 scoring code
