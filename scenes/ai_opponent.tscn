@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://csxc5syhj8c8b"]
+
+[ext_resource type="Script" uid="uid://blfh2im8cjpu5" path="res://scenes/ai_opponent.gd" id="1_4bw2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+size = Vector2(30, 168)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x3u5g"]
+load_path = "res://.godot/imported/YellowSquare.png-f1c98e2c7e98e20e2b0ddf65a4afd897.ctex"
+
+[node name="PlayerAI" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_4bw2w")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.90735e-06)
+shape = SubResource("RectangleShape2D_3vyb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.55651e-07, 0)
+scale = Vector2(1.875, 10.5)
+texture = SubResource("CompressedTexture2D_x3u5g")

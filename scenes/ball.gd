@@ -8,7 +8,6 @@ var wall_bounce_sound = preload("res://assets/sounds/wall_bounce.wav")
 var paddle_bounce_sound = preload("res://assets/sounds/paddle_hit.wav")
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var random_direction = randi_range(-1, 1)

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="ZombiePong"
+config/name="Bills_Pong"
 run/main_scene="uid://c3sj1culhx058"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
